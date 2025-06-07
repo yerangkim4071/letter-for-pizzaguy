@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>LucasPizza</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #f5f5f5;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    button {
+      background-color: #2f4f4f;
+      color: white;
+      border: 3px solid #aaa;
+      padding: 15px 30px;
+      margin: 15px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s, border 0.3s;
+    }
+
+    button:hover {
+      background-color: #556b2f;
+      border-color: #fff;
+    }
+
+    .icon-button {
+      font-size: 32px;
+      background: none;
+      border: 3px solid #aaa;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .icon-button:hover {
+      background-color: #333;
+      border-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>안녕 두현아~</h1>
+
+  <button onclick="alert('안녕ㅋㅋ HTML공부 열심히 해!')">click me</button>
+
+  <button class="icon-button" onclick="quiz()">📨</button>
+
+  <script>
+    function quiz() {
+      const question = "중간 난이도 통계 문제!\n\n" +
+                       "어떤 반의 시험 점수는 평균 70, 표준편차 10입니다.\n" +
+                       "이 반에서 90점을 받은 학생의 Z-점수는 얼마일까요?";
+      const userAnswer = prompt(question);
+  
+      if (userAnswer === "2") {
+        alert("정답! 편지를 볼 수 있습니다.");
+        location.href = "letter.html";
+      } else {
+        let countdown = 3;
+        document.body.innerHTML = `
+          <h1 style="font-size: 40px; color: red;">틀렸습니다.</h1>
+          <p style="font-size: 24px;">이 사이트는 <span id="timer">${countdown}</span>초 후 폭발합니다.</p>
+        `;
+  
+        const timer = setInterval(() => {
+            countdown--;
+            document.getElementById("timer").textContent = countdown;
+            if (countdown === 0) {
+              clearInterval(timer);
+              // 여기서 GitHub Pages에서 404 페이지로 리디렉션
+              window.location.href = "/this-url-does-not-exist";  
+            }
+          }, 1000);
+          
+      }
+    }
+  </script>
+  
+  
+
+</body>
+</html>
